@@ -1,11 +1,12 @@
 <script>
   import Component from "./component.svelte";
+  import SideBar from "./components/SideBar.svelte";
 </script>
 
 <style>
   main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: -8px;
     overflow-y: hidden;
     width: 100%;
@@ -18,80 +19,28 @@
     font-weight: 100;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-
   .main {
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 1s ease;
   }
 
-  .sidebar {
-    height: 100vh;
-    width: 5rem;
-    position: fixed;
-    background-color: grey;
-    display: flex;
-    flex-direction: column;
-    transition: all 200ms ease;
-  }
-  .nav-item {
-    display: inline-flex;
-    align-items: center;
-    margin: 20px;
-  }
-
-  .item-text {
-    display: none;
-    margin: 0px;
-    margin-left: 20px;
-  }
-
-  .nav-item:last-child {
-    margin-top: auto;
-  }
-
-  .sidebar:hover .item-text {
-    display: inline-flex;
-  }
-
-  .nav-item:hover {
-    color: black;
-  }
-
-  .sidebar:hover {
-    width: 15rem;
-  }
-
-  .size {
-    width: 25px;
-    height: 25px;
-  }
-
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 756px) {
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: hidden;
+      width: 100%;
+    }
   }
 </style>
 
 <main>
-  <div class="sidebar">
-    <div class="nav-item">
-      <i class="fas fa-home size" />
-      <h5 class="item-text">Home</h5>
-    </div>
-    <div class="nav-item">
-      <i class="fab fa-wpexplorer size" />
-      <h5 class="item-text">explore</h5>
-    </div>
-    <div class="nav-item">
-      <i class="fas fa-cog size" />
-      <h5 class="item-text">Settings</h5>
-    </div>
-  </div>
+  <SideBar />
   <div class="main">
     <h1>Sveltegram</h1>
     <Component />

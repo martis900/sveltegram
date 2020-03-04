@@ -7,10 +7,10 @@
   .container {
     height: 100vh;
     overflow: scroll;
-    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: all 2s ease;
   }
 </style>
 

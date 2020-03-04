@@ -16,6 +16,7 @@
   let limit = 4;
   let more = false;
   let clicks = 0;
+  let comment = "";
 
   $: if (clicks > 0) {
     setTimeout(() => (clicks = 0), 300);
@@ -29,6 +30,17 @@
       limit = comments.length;
       more = true;
     }
+  }
+
+  function sendComment() {
+    comments = [
+      {
+        user: "alekna_martynas",
+        text: comment
+      },
+      ...comments
+    ];
+    comment = "";
   }
 
   const [send, receive] = crossfade({
@@ -62,7 +74,7 @@
   }
   .postimage {
     object-fit: cover;
-    height: 500px;
+    height: 300px;
     width: 500px;
     background-color: white;
     user-select: none;
@@ -84,6 +96,22 @@
     flex-direction: column;
     transition: all 2s ease;
   }
+  .comment {
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+  }
+  .post {
+    width: 5rem;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    cursor: pointer;
+  }
+  .comment-item {
+    margin-top: 5px;
+  }
 </style>
 
 <div transition:fade={{ delay: 250, duration: 300 }} class="item">
@@ -100,10 +128,11 @@
     {text}
   </label>
 
-  {#if comments.length > 0}
-    <div class="list">
+  <div class="list">
+    {#if comments.length > 0}
       {#each comments.slice(0, limit) as comment, index (comment)}
         <label
+          class="comment-item"
           in:receive={{ key: comment.text }}
           out:send={{ key: comment.text }}
           animate:flip={{ duration: 500 }}>
@@ -111,9 +140,19 @@
           {comment.text}
         </label>
       {/each}
+      <button class="loadmore" on:click={LoadMore}>
+        {more ? 'show less' : 'show more'}
+      </button>
+    {/if}
+    <div style="position:relative;">
+      <input
+        class="comment"
+        type="text"
+        placeholder="Comment"
+        bind:value={comment} />
+      <button class="post" on:click={sendComment}>
+        <h6 style=" padding: 0;margin: 0;">Post</h6>
+      </button>
     </div>
-    <button class="loadmore" on:click={LoadMore}>
-      {more ? 'show less' : 'show more'}
-    </button>
-  {/if}
+  </div>
 </div>

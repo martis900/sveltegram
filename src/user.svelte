@@ -24,5 +24,5 @@
 <div class="user">
   <img class="image item" src={image} alt={name} />
   <h4 class="item" style="margin:20px">{name}</h4>
-  <h6 class="item">Follow</h6>
+  <h6 class="item" style="cursor: pointer;">Follow</h6>
 </div>

@@ -25,7 +25,6 @@
   }
 
   .main {
-    background-color: black;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -62,7 +61,7 @@
   }
 
   .nav-item:hover {
-    color: white;
+    color: black;
   }
 
   .sidebar:hover {

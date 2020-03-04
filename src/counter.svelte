@@ -21,7 +21,6 @@
     setTimeout(() => (clicks = 0), 300);
   }
 
-
   function LoadMore() {
     if (more) {
       limit = 4;
@@ -53,13 +52,13 @@
 
 <style>
   .item {
-    background-color: black;
-    color: white;
+    color: black;
     padding: 25px;
     border: 5px white solid;
     width: 500px;
     margin-top: 25px;
-    border: 1px black white;
+    border: 2px rgba(0, 0, 0, 0.2) solid;
+    border-radius: 15px;
   }
   .postimage {
     object-fit: cover;
@@ -67,12 +66,14 @@
     width: 500px;
     background-color: white;
     user-select: none;
+    border-radius: 10px;
+    padding-bottom: 15px;
   }
   .loadmore {
     background-color: transparent;
     outline: none;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .loadmore:focus {
@@ -94,7 +95,7 @@
     alt={text}
     draggable="false" />
   <Like {likes} {clicks} />
-  <label>
+  <label style="margin-bottom:10px;">
     <b>{user.name}</b>
     {text}
   </label>
